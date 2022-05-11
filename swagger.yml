@@ -1,0 +1,76 @@
+openapi: 3.0.0
+info:
+  version: 1.0-SNAPSHOT-oas3
+  title: ?lesson 1?
+servers:
+  - url: /v1
+paths: # defines individual endpoints (paths) in your API, and the HTTP methods (operations) supported by these endpoints.
+  /accounts:
+    get:
+      description: Query for accounts by Customer Id
+      operationId: accounts/queryAccounts
+      parameters: # Operations can have paramaters that can be passed via URL path 
+      - in: query
+        name: customerId
+        schema: 
+          type: integer 
+        description: Customer Id
+      responses:  # for each operation, you can define possible status codes such as 200, OK or 404 Not Found, and schema of the response body
+        '200':
+          description: response
+          content:
+            application/json:
+              schema: # Schemas can be defined inline or reference from externa; definition via $ref
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Account'
+    post: 
+      description: 'Create Account'
+      operationId: accounts/createAccount
+      requestBody: 
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        '201':
+          description: response
+          content: 
+            application/json:
+              schema:
+                type: object
+    
+  /accounts/{id}:
+    get:
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      description: Get Balance
+      operationId: accounts/getBalance
+      responses:
+        '200':
+          description: response
+          content:
+            application/json:
+              schema:
+                type: object
+
+
+components:
+  schemas: 
+    Account:
+      type: object
+      properties: 
+        id:
+          type: integer
+        type:
+          type: string
+        label: 
+          type: string
+        balance: 
+          type: string
+        
