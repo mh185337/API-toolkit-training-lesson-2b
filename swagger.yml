@@ -8,7 +8,7 @@ paths: # defines individual endpoints (paths) in your API, and the HTTP methods 
   /accounts:
     get:
       description: Query for accounts by Customer Id
-      operationId: accounts/queryAccounts
+      operationId: queryAccounts
       parameters: # Operations can have paramaters that can be passed via URL path 
       - in: query
         name: customerId
@@ -26,7 +26,7 @@ paths: # defines individual endpoints (paths) in your API, and the HTTP methods 
                   $ref: '#/components/schemas/Account'
     post: 
       description: 'Create Account'
-      operationId: accounts/createAccount
+      operationId: createAccount
       requestBody: 
         content:
           application/json:
@@ -50,7 +50,7 @@ paths: # defines individual endpoints (paths) in your API, and the HTTP methods 
         schema:
           type: integer
       description: Get Balance
-      operationId: accounts/getBalance
+      operationId: getBalance
       responses:
         '200':
           description: response
