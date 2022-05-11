@@ -51,7 +51,7 @@ lists:
     steps:
     - action: copy
       parameters:
-        set.ext.response.body#1#.id: 6666
+        set.ext.response.body#1#.id: 6660
   - else: "" 
     steps:
     - action: copy
